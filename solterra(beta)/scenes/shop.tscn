@@ -1,0 +1,88 @@
+[gd_scene load_steps=13 format=3 uid="uid://b2glnly2aftvx"]
+
+[ext_resource type="Script" uid="uid://bmsguv7jbsgj" path="res://scripts/shop.gd" id="1_1l46r"]
+[ext_resource type="Texture2D" uid="uid://booukkfadi311" path="res://assets/ui/Teemo Basic emote animations sprite sheet.png" id="2_032fp"]
+[ext_resource type="Texture2D" uid="uid://blmii0cr7p8dh" path="res://assets/ui/farmingTilesheetComplete.png" id="3_2fc2m"]
+[ext_resource type="PackedScene" uid="uid://ryrbq82eiv1d" path="res://scenes/berry_seedpack.tscn" id="4_2fc2m"]
+[ext_resource type="PackedScene" uid="uid://b6qxaajfknqe0" path="res://scenes/shopmenu.tscn" id="5_8r1wq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8r1wq"]
+atlas = ExtResource("2_032fp")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajxib"]
+atlas = ExtResource("2_032fp")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y6sft"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8r1wq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajxib")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4ofw"]
+atlas = ExtResource("3_2fc2m")
+region = Rect2(0, 174, 33, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_heatd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4ofw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1v8qu"]
+size = Vector2(27.5, 24)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_44xle"]
+radius = 11.0
+
+[node name="shop" type="StaticBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_1l46r")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1)
+scale = Vector2(0.414063, 0.398438)
+sprite_frames = SubResource("SpriteFrames_y6sft")
+autoplay = "default"
+frame_progress = 0.286174
+
+[node name="shopart" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(1, -4)
+sprite_frames = SubResource("SpriteFrames_heatd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 2
+position = Vector2(0.25, -2)
+shape = SubResource("RectangleShape2D_1v8qu")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+z_index = 2
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_44xle")
+
+[node name="shopmenu" parent="." instance=ExtResource("5_8r1wq")]
+position = Vector2(-64, 21)
+
+[node name="berry_seedpack" parent="." instance=ExtResource("4_2fc2m")]
+visible = false
+position = Vector2(23, 2)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

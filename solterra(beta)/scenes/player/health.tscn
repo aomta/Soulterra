@@ -1,0 +1,113 @@
+[gd_scene load_steps=12 format=3 uid="uid://bs0ysu6s7ek7d"]
+
+[ext_resource type="Texture2D" uid="uid://donu2o3lilhbl" path="res://assets/ui/Sprite sheet for Basic Pack.png" id="1_bx572"]
+[ext_resource type="Texture2D" uid="uid://tdssx1yvrxn5" path="res://assets/game/Characters/Bunny_Idle.png" id="2_iutl1"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3i84t"]
+load_path = "res://.godot/imported/Sprite sheet for Basic Pack.png-bf2b9bae7639a80c22ddd29682f75ee3.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iyoc3"]
+atlas = SubResource("CompressedTexture2D_3i84t")
+region = Rect2(107, 155, 26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_455o7"]
+atlas = ExtResource("1_bx572")
+region = Rect2(201, 9, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nyvou"]
+atlas = ExtResource("2_iutl1")
+region = Rect2(17, 158, 14, 13)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xlfv0"]
+load_path = "res://.godot/imported/Sprite sheet for Basic Pack.png-bf2b9bae7639a80c22ddd29682f75ee3.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vb2gc"]
+atlas = SubResource("CompressedTexture2D_xlfv0")
+region = Rect2(277, 166, 38, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtq6u"]
+atlas = ExtResource("1_bx572")
+region = Rect2(568, 217, 15, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qpmry"]
+load_path = "res://.godot/imported/Sprite sheet for Basic Pack.png-bf2b9bae7639a80c22ddd29682f75ee3.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q27lw"]
+atlas = SubResource("CompressedTexture2D_qpmry")
+region = Rect2(568, 217, 15, 16)
+
+[node name="uihealth" type="NinePatchRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -520.0
+offset_bottom = -276.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_iyoc3")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 39.0
+offset_bottom = 40.0
+texture = SubResource("AtlasTexture_455o7")
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 26.0
+offset_bottom = 27.0
+texture = SubResource("AtlasTexture_nyvou")
+
+[node name="TextureRect4" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 10.0
+offset_right = 100.26105
+offset_bottom = 14.0
+rotation = -6.2831855
+texture = SubResource("AtlasTexture_vb2gc")
+
+[node name="TextureRect5" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 20.0
+offset_right = 100.26105
+offset_bottom = 24.0
+rotation = -6.2831855
+texture = SubResource("AtlasTexture_vb2gc")
+
+[node name="TextureRect2" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 9.0
+offset_right = 53.0
+offset_bottom = 25.0
+texture = SubResource("AtlasTexture_gtq6u")
+
+[node name="TextureRect3" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 9.0
+offset_right = 110.0
+offset_bottom = 25.0
+rotation = -6.2831855
+texture = SubResource("AtlasTexture_q27lw")
+flip_h = true
+
+[node name="healthbar" type="ProgressBar" parent="."]
+modulate = Color(1, 0, 0.016666412, 1)
+layout_mode = 0
+offset_left = 57.0
+offset_top = 18.0
+offset_right = 476.99994
+offset_bottom = 77.999985
+scale = Vector2(0.1, 0.1)
+show_percentage = false
