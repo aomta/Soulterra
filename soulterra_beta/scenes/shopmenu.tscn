@@ -1,0 +1,178 @@
+[gd_scene load_steps=18 format=3 uid="uid://b6qxaajfknqe0"]
+
+[ext_resource type="Script" uid="uid://ctup4jcwh8ts8" path="res://scripts/shopmenu.gd" id="1_ojmih"]
+[ext_resource type="Texture2D" uid="uid://blmii0cr7p8dh" path="res://assets/ui/farmingTilesheetComplete.png" id="2_fdpeq"]
+[ext_resource type="AudioStream" uid="uid://d1g8o51ea06xb" path="res://assets/audio/SFX/coin-donation-3-181411.mp3" id="2_nmhk4"]
+[ext_resource type="Texture2D" uid="uid://b8v06ivpb2rqs" path="res://assets/ui/UI Big Play Button.png" id="2_ouitj"]
+[ext_resource type="Texture2D" uid="uid://cdprpjd3nr6fx" path="res://assets/ui/Special Icons.png" id="2_t7j7w"]
+[ext_resource type="Texture2D" uid="uid://donu2o3lilhbl" path="res://assets/ui/Sprite sheet for Basic Pack.png" id="3_fdpeq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ec5j3"]
+atlas = ExtResource("2_ouitj")
+region = Rect2(99, 4, 90, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ouitj"]
+atlas = ExtResource("2_fdpeq")
+region = Rect2(16, 64, 15, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmhk4"]
+atlas = ExtResource("2_fdpeq")
+region = Rect2(192, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ec5j3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ouitj")
+}],
+"loop": true,
+"name": &"berryseed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmhk4")
+}],
+"loop": true,
+"name": &"seedtwo",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ofjs"]
+atlas = ExtResource("3_fdpeq")
+region = Rect2(238, 16, 17, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4wold"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ofjs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c40eh"]
+atlas = ExtResource("3_fdpeq")
+region = Rect2(255, 0, 17, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w5snn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c40eh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6juu"]
+atlas = ExtResource("2_t7j7w")
+region = Rect2(96, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n1hgu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6juu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wold"]
+atlas = ExtResource("3_fdpeq")
+region = Rect2(805, 102, 22, 22)
+
+[node name="shopmenu" type="StaticBody2D"]
+script = ExtResource("1_ojmih")
+
+[node name="BuySFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_nmhk4")
+
+[node name="ColorRect" type="NinePatchRect" parent="."]
+offset_right = 131.0
+offset_bottom = 66.0
+texture = SubResource("AtlasTexture_ec5j3")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="icon" type="AnimatedSprite2D" parent="."]
+position = Vector2(39, 22)
+scale = Vector2(2.375, 2.25)
+sprite_frames = SubResource("SpriteFrames_ec5j3")
+animation = &"berryseed"
+
+[node name="buttonleft" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 5.0
+offset_top = 43.0
+offset_right = 40.0
+offset_bottom = 64.0
+metadata/_edit_use_anchors_ = true
+
+[node name="leftbuttonicon" type="AnimatedSprite2D" parent="."]
+position = Vector2(18.8153, 55)
+scale = Vector2(1.27238, 1)
+sprite_frames = SubResource("SpriteFrames_4wold")
+
+[node name="buttonright" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 43.0
+offset_top = 44.0
+offset_right = 78.0
+offset_bottom = 64.0
+metadata/_edit_use_anchors_ = true
+
+[node name="rightbuttonicon" type="AnimatedSprite2D" parent="."]
+position = Vector2(52.9063, 55.5)
+scale = Vector2(1.142, 1)
+sprite_frames = SubResource("SpriteFrames_w5snn")
+
+[node name="pricelabel" type="RichTextLabel" parent="."]
+offset_left = 68.0
+offset_top = 12.0
+offset_right = 108.0
+offset_bottom = 37.0
+text = "100"
+metadata/_edit_use_anchors_ = true
+
+[node name="coinicon" type="AnimatedSprite2D" parent="."]
+position = Vector2(112, 24)
+scale = Vector2(2.25, 1.95313)
+sprite_frames = SubResource("SpriteFrames_n1hgu")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 88.0
+offset_top = 36.0
+offset_right = 117.0
+offset_bottom = 65.0
+texture = SubResource("AtlasTexture_4wold")
+
+[node name="buybuttoncolor" type="ColorRect" parent="."]
+modulate = Color(0.360784, 0.741176, 0.192157, 0.513726)
+offset_left = 88.0
+offset_top = 36.0
+offset_right = 117.0
+offset_bottom = 65.0
+color = Color(0.139325, 0.774473, 1.54018e-06, 0.862745)
+metadata/_edit_use_anchors_ = true
+
+[node name="buybutton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(29, 29)
+offset_left = 88.0
+offset_top = 36.0
+offset_right = 117.0
+offset_bottom = 65.0
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="buttonleft" to="." method="_on_buttonleft_pressed"]
+[connection signal="pressed" from="buttonright" to="." method="_on_buttonright_pressed"]
+[connection signal="pressed" from="buybutton" to="." method="_on_buybutton_pressed"]

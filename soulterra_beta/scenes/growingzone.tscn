@@ -1,0 +1,144 @@
+[gd_scene load_steps=19 format=3 uid="uid://bpc53wwvy7myf"]
+
+[ext_resource type="Script" uid="uid://cfed1d8w5omaj" path="res://scripts/growingzone.gd" id="1_1wfvr"]
+[ext_resource type="Texture2D" uid="uid://b4six11oltybi" path="res://game/Tilesets/Tilled_Dirt_Wide.png" id="2_rnoda"]
+[ext_resource type="Texture2D" uid="uid://bhlwf2a8pxfp" path="res://game/Objects/Basic Plants.png" id="3_pqwuy"]
+[ext_resource type="Texture2D" uid="uid://b2b8lkxgj2033" path="res://game/Objects/Basic Furniture.png" id="4_mvxwn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03hoj"]
+atlas = ExtResource("2_rnoda")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g8t18"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03hoj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8j14"]
+size = Vector2(12, 11.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rd4fy"]
+atlas = ExtResource("3_pqwuy")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efs61"]
+atlas = ExtResource("3_pqwuy")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4d0r"]
+atlas = ExtResource("3_pqwuy")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjgqv"]
+atlas = ExtResource("3_pqwuy")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6gly"]
+atlas = ExtResource("4_mvxwn")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1peit"]
+atlas = ExtResource("4_mvxwn")
+region = Rect2(128, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aarwe"]
+atlas = ExtResource("3_pqwuy")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_df5ld"]
+atlas = ExtResource("3_pqwuy")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4t7qi"]
+atlas = ExtResource("3_pqwuy")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pm80y"]
+atlas = ExtResource("3_pqwuy")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qtvhg"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"berry",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rd4fy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efs61")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4d0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjgqv")
+}],
+"loop": true,
+"name": &"corngrowing",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6gly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1peit")
+}],
+"loop": true,
+"name": &"none",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aarwe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_df5ld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4t7qi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pm80y")
+}],
+"loop": true,
+"name": &"tomatogrowing",
+"speed": 0.0
+}]
+
+[node name="growingzone" type="StaticBody2D"]
+script = ExtResource("1_1wfvr")
+
+[node name="hoedland" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_g8t18")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_s8j14")
+
+[node name="plant" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -5)
+sprite_frames = SubResource("SpriteFrames_qtvhg")
+animation = &"berry"
+
+[node name="corngrowingtimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="tomatogrowingtimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="timeout" from="corngrowingtimer" to="." method="_on_corngrowingtimer_timeout"]
+[connection signal="timeout" from="tomatogrowingtimer" to="." method="_on_tomatogrowingtimer_timeout"]

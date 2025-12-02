@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://bi45xb0svyfv5"]
+
+[ext_resource type="Script" uid="uid://1mr1yl6j57c8" path="res://dialogue/dialogue.gd" id="1_vigd0"]
+[ext_resource type="Texture2D" uid="uid://bbbxsi2wivflw" path="res://assets/ui/Premade dialog box  big.png" id="2_vigd0"]
+[ext_resource type="Texture2D" uid="uid://blt7a6sl0wvwf" path="res://game/Characters/Desain tanpa judul (26).png" id="3_mwwob"]
+
+[node name="dialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vigd0")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.5
+offset_top = -52.5
+offset_right = 260.5
+offset_bottom = 52.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_vigd0")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="name" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.22100002
+anchor_top = 0.388
+anchor_right = 0.22100002
+anchor_bottom = 0.388
+offset_left = -5.140991
+offset_top = -9.740002
+offset_right = 2654.859
+offset_bottom = 383.59335
+scale = Vector2(0.15, 0.15)
+theme_override_font_sizes/normal_font_size = 120
+text = "Name:"
+
+[node name="text" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.22100002
+anchor_top = 0.47700003
+anchor_right = 0.22100002
+anchor_bottom = 0.47700003
+offset_left = -4.141014
+offset_top = 0.9149971
+offset_right = 3965.8586
+offset_bottom = 320.915
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/normal_font_size = 120
+text = "Yapping......"
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 6.500004
+offset_top = 6.5000024
+offset_right = 896.49994
+offset_bottom = 906.4999
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_mwwob")

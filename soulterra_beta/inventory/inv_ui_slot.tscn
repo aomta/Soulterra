@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbqt22fuw16gc"]
+
+[ext_resource type="Texture2D" uid="uid://cgeub0cden8q6" path="res://assets/ui/Square Buttons 26x26.png" id="1_dfngl"]
+[ext_resource type="Script" uid="uid://dyhicjpukk34k" path="res://inventory/inv_ui_slot.gd" id="1_fcwim"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcwim"]
+atlas = ExtResource("1_dfngl")
+region = Rect2(58.8861, 106.789, 26.2868, 26.4083)
+
+[node name="inv_UI_slot" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(16, 16)
+offset_right = 26.0
+offset_bottom = 26.0
+script = ExtResource("1_fcwim")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_fcwim")
+centered = false
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 0
+offset_right = 26.0
+offset_bottom = 26.0
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="item_display" type="Sprite2D" parent="CenterContainer/Panel"]
+
+[node name="Label" type="Label" parent="CenterContainer/Panel"]
+custom_minimum_size = Vector2(20, 23)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 21.0
+offset_bottom = 25.0
+scale = Vector2(0.4, 0.4)
+text = "99"
+horizontal_alignment = 2

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://vjhq3xht0b4t"]
+
+[ext_resource type="Script" uid="uid://f7qxyla0ycye" path="res://scripts/eggcollectable.gd" id="1_uibdv"]
+[ext_resource type="Resource" uid="uid://1k7qslw8asrf" path="res://inventory/item/egg.tres" id="2_mo53m"]
+[ext_resource type="Texture2D" uid="uid://b3mvhv7j7ulad" path="res://game/Objects/Egg item.png" id="2_vx1s5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mo53m"]
+radius = 8.0
+
+[node name="eggcollectable" type="StaticBody2D"]
+script = ExtResource("1_uibdv")
+item = ExtResource("2_mo53m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_vx1s5")
+
+[node name="interactable_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactable_area"]
+shape = SubResource("CircleShape2D_mo53m")
+
+[connection signal="body_entered" from="interactable_area" to="." method="_on_interactable_area_body_entered"]

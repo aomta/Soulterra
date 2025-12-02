@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=4 format=3 uid="uid://csmg3aktoakof"]
+
+[ext_resource type="Script" uid="uid://nnvet6cgmeqa" path="res://inventory/inventory_item.gd" id="1_c4dfu"]
+[ext_resource type="Texture2D" uid="uid://cty1o2u5qfsja" path="res://game/Objects/Basic Grass Biom things 1.png" id="2_l35ix"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l35ix"]
+atlas = ExtResource("2_l35ix")
+region = Rect2(32.8145, 32.9313, 13.3589, 14.3608)
+
+[resource]
+script = ExtResource("1_c4dfu")
+name = "apple"
+texture = SubResource("AtlasTexture_l35ix")
+metadata/_custom_type_script = "uid://nnvet6cgmeqa"

@@ -1,0 +1,150 @@
+[gd_scene load_steps=17 format=3 uid="uid://cbsmowvc0mgn8"]
+
+[ext_resource type="Texture2D" uid="uid://bkucl43ftyly3" path="res://assets/game/Characters/Basic Charakter Spritesheet.png" id="1_4bq1r"]
+[ext_resource type="Script" uid="uid://dqk64ej6bmlbp" path="res://scripts/player.gd" id="1_s25n1"]
+[ext_resource type="Resource" uid="uid://tldhcyry776g" path="res://inventory/playerinv.tres" id="2_gmlin"]
+[ext_resource type="PackedScene" uid="uid://jydxm4wfpaqu" path="res://inventory/inv_ui.tscn" id="4_lvxji"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s25n1"]
+atlas = ExtResource("1_4bq1r")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxlh8"]
+atlas = ExtResource("1_4bq1r")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqqr5"]
+atlas = ExtResource("1_4bq1r")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uoqog"]
+atlas = ExtResource("1_4bq1r")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4mfp"]
+atlas = ExtResource("1_4bq1r")
+region = Rect2(96, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iux3d"]
+atlas = ExtResource("1_4bq1r")
+region = Rect2(144, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adwln"]
+atlas = ExtResource("1_4bq1r")
+region = Rect2(96, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1d46"]
+atlas = ExtResource("1_4bq1r")
+region = Rect2(144, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8g2ks"]
+atlas = ExtResource("1_4bq1r")
+region = Rect2(96, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_304o6"]
+atlas = ExtResource("1_4bq1r")
+region = Rect2(144, 48, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gxf5x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s25n1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxlh8")
+}],
+"loop": true,
+"name": &"downwalk",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqqr5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uoqog")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4mfp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iux3d")
+}],
+"loop": true,
+"name": &"leftwalk",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adwln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1d46")
+}],
+"loop": true,
+"name": &"rightwalk",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8g2ks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_304o6")
+}],
+"loop": true,
+"name": &"upwalk",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dovo2"]
+radius = 4.12311
+
+[node name="player" type="CharacterBody2D"]
+z_index = 2
+script = ExtResource("1_s25n1")
+inv = ExtResource("2_gmlin")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gxf5x")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_dovo2")
+
+[node name="Inv_UI" parent="." instance=ExtResource("4_lvxji")]
+visible = false
+offset_left = -41.0
+offset_top = -79.0
+offset_right = 78.0
+offset_bottom = 17.0
+
+[node name="world_camera" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 640
+limit_bottom = 320
+limit_smoothed = true
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="island_camera" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 640
+limit_bottom = 320
+limit_smoothed = true
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true

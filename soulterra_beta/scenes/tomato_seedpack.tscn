@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7863o05ogviw"]
+
+[ext_resource type="Script" uid="uid://6ff8vc38qnfc" path="res://scripts/tomato_seedpack.gd" id="1_8ypoy"]
+[ext_resource type="Texture2D" uid="uid://bhlwf2a8pxfp" path="res://game/Objects/Basic Plants.png" id="2_uc1uc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3tma"]
+atlas = ExtResource("2_uc1uc")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dqiwq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3tma")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lpy36"]
+radius = 5.0
+
+[node name="tomato_seedpack" type="StaticBody2D"]
+script = ExtResource("1_8ypoy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dqiwq")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_lpy36")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
