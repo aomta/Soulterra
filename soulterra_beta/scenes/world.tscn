@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=4 uid="uid://psqh30218jfc"]
+[gd_scene load_steps=58 format=4 uid="uid://psqh30218jfc"]
 
 [ext_resource type="Script" uid="uid://kayes33h5xir" path="res://scripts/world.gd" id="1_e3hyu"]
 [ext_resource type="Texture2D" uid="uid://bvjposqyv35mp" path="res://game/Tilesets/Water.png" id="1_nnsk1"]
@@ -18,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://bhlwf2a8pxfp" path="res://game/Objects/Basic Plants.png" id="10_w7kh3"]
 [ext_resource type="Texture2D" uid="uid://dypkilf2s6qgc" path="res://game/Objects/Free_Chicken_House.png" id="11_kpybi"]
 [ext_resource type="PackedScene" uid="uid://ca42v2v6dlsx5" path="res://scenes/sellzone.tscn" id="11_q5onr"]
+[ext_resource type="Resource" uid="uid://dy8j66gp5anpw" path="res://inventory/item/berry.tres" id="13_37qwj"]
+[ext_resource type="Resource" uid="uid://tldhcyry776g" path="res://inventory/playerinv.tres" id="14_navra"]
 [ext_resource type="PackedScene" uid="uid://b2glnly2aftvx" path="res://scenes/shop.tscn" id="14_o8fc1"]
 [ext_resource type="PackedScene" uid="uid://btlwl8x0mx3yv" path="res://scenes/chicken.tscn" id="14_xo05s"]
 [ext_resource type="PackedScene" uid="uid://vjhq3xht0b4t" path="res://scenes/eggcollectable.tscn" id="16_pm21f"]
@@ -26,6 +28,7 @@
 [ext_resource type="AudioStream" uid="uid://mf6xokpvwuyi" path="res://assets/audio/SolterraWorldBGM.wav" id="23_munwf"]
 [ext_resource type="Texture2D" uid="uid://donu2o3lilhbl" path="res://assets/ui/Sprite sheet for Basic Pack.png" id="23_xgqkh"]
 [ext_resource type="PackedScene" uid="uid://ddbk1uxq15wfa" path="res://scenes/weather.tscn" id="24_ctatt"]
+[ext_resource type="Texture2D" uid="uid://blmii0cr7p8dh" path="res://assets/ui/farmingTilesheetComplete.png" id="25_ts3gi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2lf6f"]
 texture = ExtResource("1_nnsk1")
@@ -421,6 +424,10 @@ region = Rect2(504, 131, 35, 18)
 atlas = ExtResource("23_xgqkh")
 region = Rect2(504, 131, 35, 41)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nbtd"]
+atlas = ExtResource("25_ts3gi")
+region = Rect2(160, 48, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_o8fc1"]
 atlas = ExtResource("10_jhx03")
 region = Rect2(96, 48, 16, 16)
@@ -435,6 +442,14 @@ region = Rect2(80, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jhx03"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nbtd")
+}],
+"loop": true,
+"name": &"berry",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_o8fc1")
@@ -487,6 +502,8 @@ tile_set = SubResource("TileSet_kpybi")
 
 [node name="growingzone3" parent="Game" instance=ExtResource("7_7r4gi")]
 position = Vector2(416, 144)
+itemRes = ExtResource("13_37qwj")
+playerInv = ExtResource("14_navra")
 
 [node name="growingzone2" parent="Game" instance=ExtResource("7_7r4gi")]
 position = Vector2(416, 160)
@@ -622,10 +639,10 @@ patch_margin_right = 6
 patch_margin_bottom = 6
 
 [node name="NinePatchRect2" type="NinePatchRect" parent="UI"]
-offset_left = 565.0
-offset_top = 253.0
-offset_right = 638.0
-offset_bottom = 304.0
+offset_left = 563.0
+offset_top = 254.0
+offset_right = 636.0
+offset_bottom = 305.0
 texture = SubResource("AtlasTexture_ts3gi")
 patch_margin_left = 6
 patch_margin_top = 6
@@ -640,10 +657,9 @@ offset_bottom = 292.0
 text = "= 0"
 
 [node name="cornicon" type="AnimatedSprite2D" parent="UI"]
-position = Vector2(582, 264)
+position = Vector2(579, 264)
 sprite_frames = SubResource("SpriteFrames_jhx03")
 animation = &"corn"
-frame_progress = 0.43875247
 
 [node name="tomatotext" type="RichTextLabel" parent="UI"]
 offset_left = 589.0

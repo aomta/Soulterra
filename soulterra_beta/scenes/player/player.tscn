@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://cbsmowvc0mgn8"]
+[gd_scene load_steps=101 format=3 uid="uid://cbsmowvc0mgn8"]
 
 [ext_resource type="Script" uid="uid://dqk64ej6bmlbp" path="res://scripts/player.gd" id="1_s25n1"]
 [ext_resource type="Resource" uid="uid://tldhcyry776g" path="res://inventory/playerinv.tres" id="2_gmlin"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cw1w0n5v5f7nm" path="res://game/Characters/Bunny_Sword.png" id="5_75vfm"]
 [ext_resource type="AudioStream" uid="uid://h43s7k2bvp8s" path="res://assets/audio/SFX/walking-on-grass-363353.mp3" id="7_0owmy"]
 [ext_resource type="PackedScene" uid="uid://bs0ysu6s7ek7d" path="res://scenes/player/health.tscn" id="8_qek5x"]
+[ext_resource type="AudioStream" uid="uid://dw1utwtydhcy3" path="res://assets/audio/SFX/sword-slice-393847.mp3" id="9_5gtgg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0owmy"]
 atlas = ExtResource("3_p47bc")
@@ -766,6 +767,10 @@ offset_left = -266.0
 offset_top = -152.0
 offset_right = -786.0
 offset_bottom = -428.0
+
+[node name="AttackSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_5gtgg")
+volume_db = 1.5
 
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]

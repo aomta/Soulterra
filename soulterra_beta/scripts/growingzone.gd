@@ -3,6 +3,12 @@ var plant = Global.plantselected
 var plantgrowing = false
 var plant_grown = false
 
+@export var itemRes: InvItem   # Nanti diisi berry.tres
+@export var playerInv: Inv     # Nanti diisi playerinv.tres
+
+func _ready():
+	$plant.play("none")
+
 func _physics_process(_delta):
 	if plantgrowing == false:
 		plant = Global.plantselected
@@ -12,7 +18,7 @@ func _on_area_2d_area_entered(_area):
 	var seed = _area.get_parent()
 
 	# cek apakah ini seedpack
-	if seed.name != "tomato_seedpack" and seed.name != "corn_seedpack":
+	if seed.name != "tomato_seedpack" and seed.name != "corn_seedpack" and seed.name != "berry_seedpack":
 		return
 	if not plantgrowing:
 		if plant == 1:
@@ -23,6 +29,10 @@ func _on_area_2d_area_entered(_area):
 			plantgrowing = true
 			$tomatogrowingtimer.start()
 			$plant.play("tomatogrowing")
+		if plant == 3:
+			plantgrowing = true
+			$berrygrowingtimer.start()
+			$plant.play("berry")
 	else:
 		print("Plant already growing here")
 
@@ -53,6 +63,20 @@ func _on_tomatogrowingtimer_timeout():
 		$tomatogrowingtimer.start()
 	elif tomato_plant.frame == 3:
 		plant_grown = true
+		
+func _on_berrygrowingtimer_timeout():
+	var berry_plant = $plant
+	if berry_plant.frame == 0:
+		berry_plant.frame = 1
+		$berrygrowingtimer.start()
+	elif berry_plant.frame == 1:
+		berry_plant.frame = 2
+		$berrygrowingtimer.start()
+	elif berry_plant.frame == 2:
+		berry_plant.frame = 3
+		$berrygrowingtimer.start()
+	elif berry_plant.frame == 3:
+		plant_grown = true
 
 func _on_area_2d_input_event(_viewport, _event, _shape_idx):
 	if Input.is_action_just_pressed("click"):
@@ -67,5 +91,14 @@ func _on_area_2d_input_event(_viewport, _event, _shape_idx):
 				plantgrowing = false
 				plant_grown = false
 				$plant.play("none")
+			elif plant == 3:
+				if playerInv != null and itemRes != null:
+					playerInv.insert(itemRes) 
+				Global.numofberry += 1 
+				plantgrowing = false
+				plant_grown = false
+				$plant.play("none")
+				
+		print("number of berry: " + str(Global.numofberry))
 		print("number of corn: " + str(Global.numofcorn))
 		print("number of tomato: " + str(Global.numoftomato))

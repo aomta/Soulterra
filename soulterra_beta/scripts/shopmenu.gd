@@ -8,9 +8,11 @@ var item2price = 300
 var item1owned = false
 var item2owned = false
 
+var player_ref = null
+
 var price
 
-@onready var buy_sfx = $BuySFX    # ← tambahkan ini
+@onready var buy_sfx = $Buy_SFX
 
 func _ready():
 	$icon.play("berryseed")

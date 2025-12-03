@@ -12,6 +12,7 @@ func _process(_delta):
 func _on_area_2d_body_entered(body):
 	if body.has_method("player_shop_method"):
 		$shopmenu.visible = true
-
+		$shopmenu.player_ref = body 
+		
 func _on_area_2d_body_exited(_body):
 	$shopmenu.visible = false

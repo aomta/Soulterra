@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ca42v2v6dlsx5"]
+[gd_scene load_steps=7 format=3 uid="uid://ca42v2v6dlsx5"]
 
 [ext_resource type="Script" uid="uid://btuw68kgjdlsb" path="res://scripts/sellzone.gd" id="1_qv7xt"]
 [ext_resource type="Texture2D" uid="uid://donu2o3lilhbl" path="res://assets/ui/Sprite sheet for Basic Pack.png" id="2_qv7xt"]
+[ext_resource type="AudioStream" uid="uid://d1g8o51ea06xb" path="res://assets/audio/SFX/coin-donation-3-181411.mp3" id="3_esdi3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sj1wc"]
 radius = 6.0
@@ -32,5 +33,8 @@ shape = SubResource("CircleShape2D_sj1wc")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_k0hth")
+
+[node name="Sell_SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_esdi3")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,8 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://bpc53wwvy7myf"]
+[gd_scene load_steps=26 format=3 uid="uid://bpc53wwvy7myf"]
 
 [ext_resource type="Script" uid="uid://cfed1d8w5omaj" path="res://scripts/growingzone.gd" id="1_1wfvr"]
+[ext_resource type="Resource" uid="uid://dy8j66gp5anpw" path="res://inventory/item/berry.tres" id="2_mvxwn"]
 [ext_resource type="Texture2D" uid="uid://b4six11oltybi" path="res://game/Tilesets/Tilled_Dirt_Wide.png" id="2_rnoda"]
+[ext_resource type="Resource" uid="uid://tldhcyry776g" path="res://inventory/playerinv.tres" id="3_03hoj"]
 [ext_resource type="Texture2D" uid="uid://bhlwf2a8pxfp" path="res://game/Objects/Basic Plants.png" id="3_pqwuy"]
+[ext_resource type="Texture2D" uid="uid://blmii0cr7p8dh" path="res://assets/ui/farmingTilesheetComplete.png" id="3_rnoda"]
 [ext_resource type="Texture2D" uid="uid://b2b8lkxgj2033" path="res://game/Objects/Basic Furniture.png" id="4_mvxwn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_03hoj"]
@@ -22,6 +25,22 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s8j14"]
 size = Vector2(12, 11.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqwuy"]
+atlas = ExtResource("3_rnoda")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvxwn"]
+atlas = ExtResource("3_rnoda")
+region = Rect2(192, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8t18"]
+atlas = ExtResource("3_rnoda")
+region = Rect2(176, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8j14"]
+atlas = ExtResource("3_rnoda")
+region = Rect2(160, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rd4fy"]
 atlas = ExtResource("3_pqwuy")
@@ -65,7 +84,19 @@ region = Rect2(64, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qtvhg"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pqwuy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvxwn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8t18")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8j14")
+}],
 "loop": true,
 "name": &"berry",
 "speed": 0.0
@@ -118,6 +149,8 @@ animations = [{
 
 [node name="growingzone" type="StaticBody2D"]
 script = ExtResource("1_1wfvr")
+itemRes = ExtResource("2_mvxwn")
+playerInv = ExtResource("3_03hoj")
 
 [node name="hoedland" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_g8t18")
@@ -128,12 +161,14 @@ sprite_frames = SubResource("SpriteFrames_g8t18")
 shape = SubResource("RectangleShape2D_s8j14")
 
 [node name="plant" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_qtvhg")
-animation = &"berry"
+animation = &"none"
 
 [node name="corngrowingtimer" type="Timer" parent="."]
 wait_time = 5.0
+
+[node name="berrygrowingtimer" type="Timer" parent="."]
+wait_time = 7.0
 
 [node name="tomatogrowingtimer" type="Timer" parent="."]
 wait_time = 5.0
@@ -141,4 +176,5 @@ wait_time = 5.0
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="timeout" from="corngrowingtimer" to="." method="_on_corngrowingtimer_timeout"]
+[connection signal="timeout" from="berrygrowingtimer" to="." method="_on_berrygrowingtimer_timeout"]
 [connection signal="timeout" from="tomatogrowingtimer" to="." method="_on_tomatogrowingtimer_timeout"]

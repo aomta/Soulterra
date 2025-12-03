@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var footstep_sfx = $FootstepSFX
+@onready var attack_sfx = $AttackSFX
 
 var enemy_inattack_range = false
 var enemy_attack_cooldown = true
@@ -124,7 +125,6 @@ func enemy_attack():
 		$attack_cooldown.start()
 		print(health)
 
-
 func _on_attack_cooldown_timeout():
 	enemy_attack_cooldown = true
 
@@ -146,8 +146,10 @@ func attack():
 			$AnimatedSprite2D.play("swordback")
 
 		$deal_attack_timer.start()
-
-
+		if attack_sfx != null: 
+				if attack_sfx.playing:
+					attack_sfx.stop() 
+				attack_sfx.play()
 
 func _on_deal_attack_timer_timeout():
 	$deal_attack_timer.stop()
