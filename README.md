@@ -133,15 +133,15 @@ See the `LICENSE` file for details.
 - Demo: https://aomta.github.io/Soulterra/
 
 ---
-![Gameplay Preview](docs/assets/screenshot-1.png)
-![Gameplay Preview](docs/assets/screenshot-2.png)
-![Gameplay Preview](docs/assets/screenshot-3.png)
-![Gameplay Preview](docs/assets/screenshot-4.png)
-![Gameplay Preview](docs/assets/screenshot-5.png)
-![Gameplay Preview](docs/assets/screenshot-6.png)
-![Gameplay Preview](docs/assets/screenshot-7.png)
-![Gameplay Preview](docs/assets/screenshot-8.png)
-![Gameplay Preview](docs/assets/screenshot-9.png)
-![Gameplay Preview](docs/assets/screenshot-10.png)
-![Gameplay Preview](docs/assets/screenshot-11.png)
+![Gameplay Preview](docs/assets/Screenshot-1.png)
+![Gameplay Preview](docs/assets/Screenshot-2.png)
+![Gameplay Preview](docs/assets/Screenshot-3.png)
+![Gameplay Preview](docs/assets/Screenshot-4.png)
+![Gameplay Preview](docs/assets/Screenshot-5.png)
+![Gameplay Preview](docs/assets/Screenshot-6.png)
+![Gameplay Preview](docs/assets/Screenshot-7.png)
+![Gameplay Preview](docs/assets/Screenshot-8.png)
+![Gameplay Preview](docs/assets/Screenshot-9.png)
+![Gameplay Preview](docs/assets/Screenshot-10.png)
+![Gameplay Preview](docs/assets/Screenshot-11.png)
 
